@@ -1,10 +1,10 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\CubeMovement.js">
+  <MonoDevelop.Ide.Workbench ActiveDocument="..\..\..\Desktop\Roll-a-ball\Assets\Scripts\Player_Controller.cs">
     <Files>
       <File FileName="..\..\..\Desktop\Roll-a-ball\Assets\Scripts\Player_Controller.cs" Line="1" Column="1" />
-      <File FileName="Assets\CubeMovement.js" Line="61" Column="16" />
-      <File FileName="Assets\Aaron-working\EnemyMovement.js" Line="1" Column="21" />
+      <File FileName="Assets\EnemyMovement.js" Line="1" Column="1" />
+      <File FileName="Assets\Aaron-working\BulletBehavior.js" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
