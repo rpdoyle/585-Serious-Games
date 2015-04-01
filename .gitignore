@@ -5,3 +5,4 @@ Test-Project.sln
 Test-Project.userprefs
 Test-Project-csharp.sln
 Temp/*
+*.sln
