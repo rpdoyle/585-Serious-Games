@@ -22,15 +22,15 @@ var left : boolean = false;
 function Update () {
 	if (!gamePaused) {
 
-		if (Input.GetKey(KeyCode.UpArrow) && transform.position.z < levelTopEdge) {
+		if (Input.GetKey(KeyCode.W) && transform.position.z < levelTopEdge) {
 			transform.Translate(Vector3(0,0,1) * Time.deltaTime*movementSpeed);
 		}
 		
-	    if (Input.GetKey(KeyCode.DownArrow) && transform.position.z > levelBottomEdge) {
+	    if (Input.GetKey(KeyCode.S) && transform.position.z > levelBottomEdge) {
 	    	transform.Translate(Vector3(0,0,-1) * Time.deltaTime*movementSpeed);
 	    }
 	    
-	    if (Input.GetKey(KeyCode.LeftArrow) && transform.position.x > levelLeftEdge) {
+	    if (Input.GetKey(KeyCode.A) && transform.position.x > levelLeftEdge) {
 	    	transform.Translate(Vector3(-1,0,0) * Time.deltaTime*movementSpeed);
 	    	
 	    	if (transform.position.x > levelLeftEdge + cameraEdge && transform.position.x < levelRightEdge - cameraEdge) {
@@ -41,7 +41,7 @@ function Update () {
 	    	left = true;
 	    }
 	    
-	    if (Input.GetKey(KeyCode.RightArrow) && transform.position.x < levelRightEdge) {
+	    if (Input.GetKey(KeyCode.D) && transform.position.x < levelRightEdge) {
 	    	transform.Translate(Vector3(1,0,0) * Time.deltaTime*movementSpeed);
 	    	
 	    	if (transform.position.x < levelRightEdge - cameraEdge && transform.position.x > levelLeftEdge + cameraEdge) {
