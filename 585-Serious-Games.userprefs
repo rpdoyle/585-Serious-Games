@@ -1,19 +1,8 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-<<<<<<< HEAD
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\EnemyMovement.js">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Alex-working/Scripts/MenuTextControl.js">
     <Files>
-      <File FileName="Assets\Ryan-working\CubeMovement1.js" Line="32" Column="6" />
-      <File FileName="Assets\Alex-working\Scripts\MenuTextControl.js" Line="31" Column="1" />
-      <File FileName="Assets\CubeMovement.js" Line="1" Column="1" />
-      <File FileName="Assets\EnemyMovement.js" Line="1" Column="1" />
-=======
-  <MonoDevelop.Ide.Workbench ActiveDocument="..\..\..\Desktop\Roll-a-ball\Assets\Scripts\Player_Controller.cs">
-    <Files>
-      <File FileName="..\..\..\Desktop\Roll-a-ball\Assets\Scripts\Player_Controller.cs" Line="1" Column="1" />
-      <File FileName="Assets\EnemyMovement.js" Line="1" Column="1" />
-      <File FileName="Assets\Aaron-working\BulletBehavior.js" Line="1" Column="1" />
->>>>>>> 3f8e96df6aae333203eb1a0c39035030ddb18dae
+      <File FileName="Assets/Alex-working/Scripts/MenuTextControl.js" Line="29" Column="20" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
