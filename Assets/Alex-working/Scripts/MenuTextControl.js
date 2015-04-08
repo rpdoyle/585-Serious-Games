@@ -45,3 +45,7 @@ function FadeText() {
 		titleText.enabled = false;
 	}
 }
+
+function LoadPaulRevereLevel() {
+	Application.LoadLevel(1);
+}

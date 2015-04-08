@@ -4,8 +4,9 @@ public var dialogueStyle:GUIStyle;
 public var buttonStyle:GUIStyle;
 public var player:GameObject;
 public var levelEndX:int;
-private var dialogueVisible:boolean;
+private var dialogVisible:boolean;
 private var levelEndDialog:boolean = false;
+private var diedDialog:boolean = false;
 private var moveableObjects:GameObject[];
 private var dialogString:String;
 private var dialogButtonString:String;
@@ -25,10 +26,10 @@ function Update () {
 }
 
 function OnGUI () {
-	if (dialogueVisible) {
+	if (dialogVisible) {
 		 GUI.Label (Rect (0, 0, Screen.width, Screen.height), dialogString, dialogueStyle);
-		 if (GUI.Button (Rect (Screen.width - (Screen.width / 4), Screen.height - (Screen.height / 4), 150, 100), dialogButtonString, buttonStyle)) {
-		 	if (levelEndDialog) {
+		 if (GUI.Button (Rect (Screen.width - (Screen.width / 4), Screen.height - (Screen.height / 4), 100, 75), dialogButtonString, buttonStyle)) {
+		 	if (levelEndDialog || diedDialog) {
 		 		EndLevel();
 		 	} else {
 		 		HideDialog();
@@ -39,12 +40,12 @@ function OnGUI () {
 
 function ShowDialog () {
 	Pause();
-	dialogueVisible = true;
+	dialogVisible = true;
 }
 
 function HideDialog () {
 	Resume();
-	dialogueVisible = false;
+	dialogVisible = false;
 }
 
 function ShowLevelEndDialog () {
@@ -55,16 +56,26 @@ function ShowLevelEndDialog () {
 	dialogString = "Congrats! You made it to the end!";
 	dialogButtonString = "Continue";
 	
-	dialogueVisible = true;
+	dialogVisible = true;
+}
+
+function ShowDiedDialog () {
+	Pause();
+	diedDialog = true;
+	dialogString = "You died!";
+	dialogButtonString = "Continue";
+	dialogVisible = true;
 }
 
 function Pause () {
+	moveableObjects = GameObject.FindGameObjectsWithTag("CanMove");
 	for (var obj in moveableObjects) {
 		obj.SendMessage("PauseGame");
 	}
 }
 
 function Resume() {
+	moveableObjects = GameObject.FindGameObjectsWithTag("CanMove");
 	for (var obj in moveableObjects) {
 		obj.SendMessage("ResumeGame");
 	}
@@ -72,4 +83,5 @@ function Resume() {
 
 function EndLevel() {
 	HideDialog();
+	Application.LoadLevel(0);
 }

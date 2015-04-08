@@ -1,8 +1,9 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Alex-working/Scripts/MenuTextControl.js">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Alex-working\Scripts\MenuTextControl.js">
     <Files>
-      <File FileName="Assets/Alex-working/Scripts/MenuTextControl.js" Line="15" Column="1" />
+      <File FileName="Assets\Alex-working\Scripts\MenuTextControl.js" Line="30" Column="1" />
+      <File FileName="Assets\CubeMovement.js" Line="40" Column="17" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
