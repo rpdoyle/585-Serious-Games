@@ -1,33 +1,47 @@
 ﻿#pragma strict
 import UnityEngine.UI;
 
-public var myText:Text;
+public var levelSelectText:Text;
+public var titleText:Text;
 public var myPic:GameObject;
 public var fadeTime:float;
+private var picVisible:boolean;
 private var textVisible:boolean;
 
 function Start () {
-	
+	picVisible = false;
+	textVisible = true;
 }
 
 function Update () {
+	FadePic();
 	FadeText();
 }
 
 function OnMouseOver () {
-	textVisible = true;
+	picVisible = true;
+	textVisible = false;
 }
 
 function OnMouseExit () {
-	textVisible = false;
+	picVisible = false;
+	textVisible = true;
+}
+
+function FadePic() {
+	if (picVisible) {
+		myPic.SetActive(true);
+	} else {
+		myPic.SetActive(false);
+	}
 }
 
 function FadeText() {
 	if (textVisible) {
-		myText.color = Color.Lerp (myText.color, Color.white, fadeTime * Time.deltaTime);
-		myPic.SetActive(true);
+		levelSelectText.enabled = true;
+		titleText.enabled = true;
 	} else {
-		myText.color = Color.Lerp (myText.color, Color.clear, fadeTime * Time.deltaTime);
-		myPic.SetActive(false);
+		levelSelectText.enabled = false;
+		titleText.enabled = false;
 	}
 }
