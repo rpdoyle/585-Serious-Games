@@ -7,12 +7,10 @@ public var levelEndX:int;
 private var dialogVisible:boolean;
 private var levelEndDialog:boolean = false;
 private var diedDialog:boolean = false;
-private var moveableObjects:GameObject[];
 private var dialogString:String;
 private var dialogButtonString:String;
 
 function Start () {
-	moveableObjects = GameObject.FindGameObjectsWithTag("CanMove");
 	dialogString = "This is where awesome text explaining the level will be displayed.\n\nYou can use multiple lines if you like. Or not, that's cool too." + 
 						"\nPress any button to do nothing.\n\nNo, seriously, nothing.\n\nYep, absolutely nothing.";
 	dialogButtonString = "Got it!";
@@ -46,9 +44,17 @@ function ShowDialog () {
 function HideDialog () {
 	Resume();
 	dialogVisible = false;
+	levelEndDialog = false;
+	diedDialog = false;
 }
 
 function ShowLevelEndDialog () {
+	var zombies:GameObject[] = GameObject.FindGameObjectsWithTag("Zombie");
+	
+	if (zombies.Length > 0) {
+		return;
+	}
+
 	Pause();
 	
 	levelEndDialog = true;
@@ -68,15 +74,16 @@ function ShowDiedDialog () {
 }
 
 function Pause () {
-	moveableObjects = GameObject.FindGameObjectsWithTag("CanMove");
-	for (var obj in moveableObjects) {
+	var pausableObjects:GameObject[] = GetPausableObjects();
+	
+	for (var obj in pausableObjects) {
 		obj.SendMessage("PauseGame");
 	}
 }
 
 function Resume() {
-	moveableObjects = GameObject.FindGameObjectsWithTag("CanMove");
-	for (var obj in moveableObjects) {
+	var pausableObjects:GameObject[] = GetPausableObjects();
+	for (var obj in pausableObjects) {
 		obj.SendMessage("ResumeGame");
 	}
 }
@@ -84,4 +91,12 @@ function Resume() {
 function EndLevel() {
 	HideDialog();
 	Application.LoadLevel(0);
+}
+
+function GetPausableObjects() {
+	var canMoveObjects = new Array(GameObject.FindGameObjectsWithTag("CanMove"));
+	var zombies = new Array(GameObject.FindGameObjectsWithTag("Zombie"));
+	var pausableObjects:GameObject[] = canMoveObjects.Concat(zombies).ToBuiltin(GameObject);
+	
+	return pausableObjects;
 }
