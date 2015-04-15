@@ -16,6 +16,7 @@ var projectile : GameObject;
 var travelSpeed : int = 1000;
 var bulletSpawnRight : Transform;
 var bulletSpawnLeft : Transform;
+var gunshot : AudioClip;
 
 function Update () {
 	if (!gamePaused) {
@@ -46,12 +47,16 @@ function Update () {
 	    
 	    
 	    if(Input.GetMouseButtonDown(1) && !Input.GetMouseButtonDown(0)) {
+	    	audio.clip = gunshot;
+	    	audio.Play();
 	    	var bulletRight : GameObject = Instantiate(projectile, bulletSpawnRight.position, bulletSpawnRight.rotation);
 	    	bulletRight.rigidbody.AddForce(transform.right * travelSpeed);
 	    	bulletRight.rigidbody.useGravity = false;
 	    }
 	    
 	    if(Input.GetMouseButtonDown(0)&& !Input.GetMouseButtonDown(1)) {
+	    	audio.clip = gunshot;
+	    	audio.Play();
 	    	var bulletLeft : GameObject = Instantiate(projectile, bulletSpawnLeft.position, bulletSpawnLeft.rotation);
 	    	bulletLeft.rigidbody.AddForce(transform.right * -travelSpeed);
 	    	bulletLeft.rigidbody.useGravity = false;
