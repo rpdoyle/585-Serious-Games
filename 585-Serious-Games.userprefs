@@ -1,8 +1,12 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace />
-  <MonoDevelop.Ide.Workbench ActiveDocument="..\Maze\Assets\scripts\EnemyAnimate.js">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Ryan-working\LevelManagerRyan.js">
     <Files>
-      <File FileName="..\Maze\Assets\scripts\EnemyAnimate.js" Line="1" Column="1" />
+      <File FileName="Assets\LevelManager.js" Line="1" Column="1" />
+      <File FileName="Assets\CubeMovement.js" Line="1" Column="1" />
+      <File FileName="Assets\Ryan-working\LevelManagerRyan.js" Line="22" Column="27" />
+      <File FileName="Assets\Ryan-working\RequiredPoint.js" Line="1" Column="1" />
+      <File FileName="Assets\BulletBehavior.js" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
