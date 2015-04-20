@@ -1,0 +1,208 @@
+fileFormatVersion: 2
+guid: 66adb95fff6ac4c9183ed31490d645ae
+ModelImporter:
+  serializedVersion: 15
+  fileIDToRecycleName:
+    100000: Arm_Left
+    100002: Arm_Right
+    100004: Arm_Right.1
+    100006: Arm_Right.2
+    100008: Body
+    100010: Head
+    100012: LeftLeg
+    100014: LeftSholder
+    100016: RightLeg
+    100018: RightSholder
+    100020: //RootNode
+    400000: Arm_Left
+    400002: Arm_Right
+    400004: Arm_Right.1
+    400006: Arm_Right.2
+    400008: Body
+    400010: Head
+    400012: LeftLeg
+    400014: LeftSholder
+    400016: RightLeg
+    400018: RightSholder
+    400020: //RootNode
+    2300000: Arm_Left
+    2300002: Arm_Right
+    2300004: Arm_Right.1
+    2300006: Arm_Right.2
+    2300008: Body
+    2300010: Head
+    2300012: LeftLeg
+    2300014: LeftSholder
+    2300016: RightLeg
+    2300018: RightSholder
+    3300000: Arm_Left
+    3300002: Arm_Right
+    3300004: Arm_Right.1
+    3300006: Arm_Right.2
+    3300008: Body
+    3300010: Head
+    3300012: LeftLeg
+    3300014: LeftSholder
+    3300016: RightLeg
+    3300018: RightSholder
+    4300000: Head
+    4300002: LeftSholder
+    4300004: Arm_Left
+    4300006: RightSholder
+    4300008: Arm_Right
+    4300010: RightLeg
+    4300012: Arm_Right.1
+    4300014: LeftLeg
+    4300016: Arm_Right.2
+    4300018: Body
+    7400000: WalkZ
+    7400002: Explode
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: WalkZ
+      takeName: Take 0
+      firstFrame: 0
+      lastFrame: 60
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Body
+        weight: 1
+      - path: Head
+        weight: 1
+      - path: LeftLeg
+        weight: 1
+      - path: LeftLeg/Arm_Right.2
+        weight: 1
+      - path: LeftSholder
+        weight: 1
+      - path: LeftSholder/Arm_Left
+        weight: 1
+      - path: RightLeg
+        weight: 1
+      - path: RightLeg/Arm_Right.1
+        weight: 1
+      - path: RightSholder
+        weight: 1
+      - path: RightSholder/Arm_Right
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Explode
+      takeName: Take 1
+      firstFrame: 0
+      lastFrame: 30
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Body
+        weight: 1
+      - path: Head
+        weight: 1
+      - path: LeftLeg
+        weight: 1
+      - path: LeftLeg/Arm_Right.2
+        weight: 1
+      - path: LeftSholder
+        weight: 1
+      - path: LeftSholder/Arm_Left
+        weight: 1
+      - path: RightLeg
+        weight: 1
+      - path: RightLeg/Arm_Right.1
+        weight: 1
+      - path: RightSholder
+        weight: 1
+      - path: RightSholder/Arm_Right
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: .00999999978
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 1
+  userData: 

@@ -14,10 +14,10 @@ private var health : int = 2;
 
 function OnTriggerEnter(col : Collider) {
 	if(col.gameObject.tag == "Bullet") {
-		if(health == 0) {
+		if(health == 0) { //DEATH
 			Destroy(gameObject);
 			Destroy(col.gameObject);
-		} else {
+		} else { //Bullet Hit
 			health = health - 1;
 			Destroy(col.gameObject);
 		}
