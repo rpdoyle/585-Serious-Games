@@ -12,12 +12,15 @@ private var layerMask = 1 << 9;
 private var canMove:boolean = true;
 private var health : int = 2;
 
+var redTexture : Texture;
+var cam : Camera;
+
 function OnTriggerEnter(col : Collider) {
 	if(col.gameObject.tag == "Bullet") {
-		if(health == 0) { //DEATH
+		if(health == 0) {
 			Destroy(gameObject);
 			Destroy(col.gameObject);
-		} else { //Bullet Hit
+		} else {
 			health = health - 1;
 			Destroy(col.gameObject);
 		}
@@ -82,6 +85,13 @@ function Move() {
 			AttackPlayer();
 		}
 	}
+}
+
+function OnGUI() {
+	GUI.depth = 8;
+	GUI.skin.box.normal.background = redTexture;
+	GUI.Box(Rect(cam.WorldToScreenPoint(transform.position).x - (renderer.bounds.size.x * 20), (Screen.height - cam.WorldToScreenPoint(transform.position).y) - (renderer.bounds.size.y * 100), health*20 + 5, 5), "");
+
 }
 
 function AttackPlayer() {

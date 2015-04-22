@@ -2,7 +2,8 @@
 
 var movementSpeed : int = 10;
 var mainCamera : GameObject;
-var cameraEdge : int = 10;
+var cameraLeftEdge : int = 10;
+var cameraRightEdge : int = 10;
 var levelTopEdge : int = 6;
 var levelBottomEdge : int = -8;
 var levelLeftEdge : int = -10;
@@ -18,6 +19,9 @@ var bulletSpawnRight : Transform;
 var bulletSpawnLeft : Transform;
 var gunshot : AudioClip;
 
+var frontTexture : Texture;
+var backTexture : Texture;
+
 function Update () {
 	if (!gamePaused) {
 
@@ -32,7 +36,7 @@ function Update () {
 	    if (Input.GetKey(KeyCode.A) && transform.position.x > levelLeftEdge) {
 	    	transform.Translate(Vector3(-1,0,0) * Time.deltaTime*movementSpeed);
 	    	
-	    	if (transform.position.x > levelLeftEdge + cameraEdge && transform.position.x < levelRightEdge - cameraEdge) {
+	    	if (transform.position.x > levelLeftEdge + cameraLeftEdge && transform.position.x < levelRightEdge - cameraRightEdge) {
 	    		mainCamera.transform.position.x = transform.position.x;
 	    	}
 	    }
@@ -40,7 +44,7 @@ function Update () {
 	    if (Input.GetKey(KeyCode.D) && transform.position.x < levelRightEdge) {
 	    	transform.Translate(Vector3(1,0,0) * Time.deltaTime*movementSpeed);
 	    	
-	    	if (transform.position.x < levelRightEdge - cameraEdge && transform.position.x > levelLeftEdge + cameraEdge) {
+	    	if (transform.position.x < levelRightEdge - cameraRightEdge && transform.position.x > levelLeftEdge + cameraLeftEdge) {
 	    		mainCamera.transform.position.x = transform.position.x;
 	    	}
 	    }
@@ -63,6 +67,17 @@ function Update () {
 	    }
     }
 } 
+
+function OnGUI() {
+	GUI.skin.box.normal.background = backTexture;
+	GUI.Box(Rect(18, 8, 104, 24), "");
+	
+	if(health > 0) {
+		GUI.skin.box.normal.background = frontTexture;
+		GUI.Box(Rect(20, 10, health*10, 20), "HP");
+		
+		}
+}
 
 public function PauseGame() {
 	gamePaused = true;

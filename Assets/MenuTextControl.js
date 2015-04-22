@@ -49,3 +49,7 @@ function FadeText() {
 function LoadPaulRevereLevel() {
 	Application.LoadLevel(1);
 }
+
+function LoadMoonLevel() {
+	Application.LoadLevel(2);
+}

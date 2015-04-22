@@ -3,9 +3,12 @@
 public var dialogueStyle:GUIStyle;
 public var buttonStyle:GUIStyle;
 public var player:GameObject;
+public var flag:GameObject;
 public var levelEndX:int;
+public var levelBeginX:int;
 private var dialogVisible:boolean;
 private var levelEndDialog:boolean = false;
+private var flagPlaced:boolean = false;
 private var diedDialog:boolean = false;
 private var dialogString:String;
 private var dialogButtonString:String;
@@ -15,10 +18,14 @@ function Start () {
 						"\nPress any button to do nothing.\n\nNo, seriously, nothing.\n\nYep, absolutely nothing.";
 	dialogButtonString = "Got it!";
 	ShowDialog();
+	flag.SetActive(false);
 }
 
 function Update () {
-	if (levelEndX - player.transform.position.x < 0.1 && !levelEndDialog) {
+	if (levelEndX - player.transform.position.x < 0.1 && !flagPlaced) {
+	    PlaceFlag();
+	}
+	if (player.transform.position.x - levelBeginX < 0.1 && !levelEndDialog && flagPlaced) {
 	    ShowLevelEndDialog();
 	}
 }
@@ -65,6 +72,11 @@ function ShowLevelEndDialog () {
 	dialogVisible = true;
 }
 
+function PlaceFlag() {
+	flag.SetActive(true);
+	flagPlaced = true;
+}
+
 function ShowDiedDialog () {
 	Pause();
 	diedDialog = true;
@@ -97,6 +109,7 @@ function GetPausableObjects() {
 	var canMoveObjects = new Array(GameObject.FindGameObjectsWithTag("CanMove"));
 	var zombies = new Array(GameObject.FindGameObjectsWithTag("Zombie"));
 	var pausableObjects:GameObject[] = canMoveObjects.Concat(zombies).ToBuiltin(GameObject);
+	pausableObjects += [player];
 	
 	return pausableObjects;
 }
