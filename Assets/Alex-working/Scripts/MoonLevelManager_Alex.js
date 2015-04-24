@@ -24,7 +24,7 @@ function Start () {
 function Update () {
 	if (levelEndX - player.transform.position.x < 0.1 && !flagPlaced) {
 	    PlaceFlag();
-	    ReleaseSecondWave();
+   	    ReleaseSecondWave();
 	}
 	if (player.transform.position.x - levelBeginX < 0.1 && !levelEndDialog && flagPlaced) {
 	    ShowLevelEndDialog();
@@ -59,7 +59,7 @@ function HideDialog () {
 function ShowLevelEndDialog () {
 	var zombies1 = new Array(GameObject.FindGameObjectsWithTag("Zombie"));
 	var zombies2 = new Array(GameObject.FindGameObjectsWithTag("Zombie2"));
-	var zombies : GameObject[] = zombies1.Concat(zombies2).ToBuiltin(GameObject);
+	var zombies : GameObject[] = zombies1.Concat(zombies2).ToBuiltin(GameObject);	
 	
 	if (zombies.Length > 0) {
 		return;
@@ -83,7 +83,7 @@ function PlaceFlag() {
 function ReleaseSecondWave() {
 	var zombies2 = new Array(GameObject.FindGameObjectsWithTag("Zombie2"));
 	for (var zombie : GameObject in zombies2) {
-		zombie.transform.position.y += 2;
+		zombie.transform.position.y += 12;
 	}
 }
 

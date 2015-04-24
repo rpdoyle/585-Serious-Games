@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: db607532aa05544298c0cca8ef978925
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - mainCamera: {instanceID: 0}
+  - levelManager: {instanceID: 0}
+  - projectile: {instanceID: 0}
+  - bulletSpawnRight: {instanceID: 0}
+  - bulletSpawnLeft: {instanceID: 0}
+  - gunshot: {instanceID: 0}
+  - greenTexture: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
