@@ -24,6 +24,7 @@ function Start () {
 function Update () {
 	if (levelEndX - player.transform.position.x < 0.1 && !flagPlaced) {
 	    PlaceFlag();
+   	    ReleaseSecondWave();
 	}
 	if (player.transform.position.x - levelBeginX < 0.1 && !levelEndDialog && flagPlaced) {
 	    ShowLevelEndDialog();
@@ -56,7 +57,9 @@ function HideDialog () {
 }
 
 function ShowLevelEndDialog () {
-	var zombies:GameObject[] = GameObject.FindGameObjectsWithTag("Zombie");
+	var zombies1 = new Array(GameObject.FindGameObjectsWithTag("Zombie"));
+	var zombies2 = new Array(GameObject.FindGameObjectsWithTag("Zombie2"));
+	var zombies : GameObject[] = zombies1.Concat(zombies2).ToBuiltin(GameObject);	
 	
 	if (zombies.Length > 0) {
 		return;
@@ -75,6 +78,13 @@ function ShowLevelEndDialog () {
 function PlaceFlag() {
 	flag.SetActive(true);
 	flagPlaced = true;
+}
+
+function ReleaseSecondWave() {
+	var zombies2 = new Array(GameObject.FindGameObjectsWithTag("Zombie2"));
+	for (var zombie : GameObject in zombies2) {
+		zombie.transform.position.y += 12;
+	}
 }
 
 function ShowDiedDialog () {
@@ -108,7 +118,9 @@ function EndLevel() {
 function GetPausableObjects() {
 	var canMoveObjects = new Array(GameObject.FindGameObjectsWithTag("CanMove"));
 	var zombies = new Array(GameObject.FindGameObjectsWithTag("Zombie"));
-	var pausableObjects:GameObject[] = canMoveObjects.Concat(zombies).ToBuiltin(GameObject);
+	var zombies2 = new Array(GameObject.FindGameObjectsWithTag("Zombie2"));
+	zombies = zombies.Concat(canMoveObjects);
+	var pausableObjects:GameObject[] = zombies2.Concat(zombies).ToBuiltin(GameObject);
 	pausableObjects += [player];
 	
 	return pausableObjects;

@@ -50,7 +50,8 @@ function Update () {
 	    }
 	    
 	    
-	    if(Input.GetMouseButtonDown(1) && !Input.GetMouseButtonDown(0)) {
+	    if ((Input.GetMouseButtonDown(1) && !Input.GetMouseButtonDown(0)) ||
+	       (Input.GetKeyDown(KeyCode.RightArrow) && !Input.GetKeyDown(KeyCode.LeftArrow))) {
 	    	audio.clip = gunshot;
 	    	audio.Play();
 	    	var bulletRight : GameObject = Instantiate(projectile, bulletSpawnRight.position, bulletSpawnRight.rotation);
@@ -58,7 +59,8 @@ function Update () {
 	    	bulletRight.rigidbody.useGravity = false;
 	    }
 	    
-	    if(Input.GetMouseButtonDown(0)&& !Input.GetMouseButtonDown(1)) {
+	    if ((Input.GetMouseButtonDown(0) && !Input.GetMouseButtonDown(1)) ||
+	        (Input.GetKeyDown(KeyCode.LeftArrow) && !Input.GetKeyDown(KeyCode.RightArrow))) {
 	    	audio.clip = gunshot;
 	    	audio.Play();
 	    	var bulletLeft : GameObject = Instantiate(projectile, bulletSpawnLeft.position, bulletSpawnLeft.rotation);

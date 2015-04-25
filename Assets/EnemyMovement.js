@@ -57,7 +57,7 @@ function Update() {
 function Move() {
 	distance = Vector3.Distance(transform.position, target.transform.position);
 
-	transform.position.y = originalY;
+//	transform.position.y = originalY;
     
     //enemy sees you - perform some action
 	if(distance > 2 && distance < 13) {

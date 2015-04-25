@@ -1,22 +1,14 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Alex-working/Scripts/MoonLevelManager_Alex.js">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\MoonLevelManager.js">
     <Files>
-      <File FileName="Assets/Alex-working/Scripts/LevelManager_Alex.js" Line="125" Column="25" />
-      <File FileName="Assets/Alex-working/Scripts/CubeMovement_Alex.js" Line="62" Column="57" />
-      <File FileName="Assets/Alex-working/Scripts/EnemyMovement_Alex.js" Line="60" Column="37" />
-      <File FileName="Assets/Alex-working/Scripts/MoonLevelManager_Alex.js" Line="72" Column="50" />
-      <File FileName="Assets/Alex-working/Scripts/MenuTextControl_Alex.js" Line="35" Column="2" />
+      <File FileName="Assets\MoonLevelManager.js" Line="124" Column="30" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
           <Node name="Assembly-UnityScript" expanded="True">
-            <Node name="Alex-working" expanded="True">
-              <Node name="Scripts" expanded="True">
-                <Node name="MoonLevelManager_Alex.js" selected="True" />
-              </Node>
-            </Node>
+            <Node name="MoonLevelManager.js" selected="True" />
           </Node>
         </State>
       </Pad>
