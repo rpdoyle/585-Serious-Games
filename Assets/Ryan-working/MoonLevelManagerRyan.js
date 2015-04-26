@@ -11,6 +11,7 @@ private var levelEndDialog:boolean = false;
 private var flagPlaced:boolean = false;
 private var diedDialog:boolean = false;
 private var pauseDialog:boolean = false;
+private var appropriateToShowWarning:boolean = true;
 private var dialogString:String;
 private var dialogButtonString:String;
 
@@ -23,11 +24,15 @@ function Start () {
 }
 
 function Update () {
+	if (player.transform.position.x - levelBeginX > 3) {
+		appropriateToShowWarning = true;
+	}
+
 	if (levelEndX - player.transform.position.x < 0.1 && !flagPlaced) {
 	    PlaceFlag();
    	    ReleaseSecondWave();
 	}
-	if (player.transform.position.x - levelBeginX < 0.1 && !levelEndDialog && flagPlaced) {
+	if (player.transform.position.x - levelBeginX < 0.1 && !levelEndDialog) {
 	    ShowLevelEndDialog();
 	}
 	
@@ -59,6 +64,7 @@ function HideDialog () {
 	dialogVisible = false;
 	levelEndDialog = false;
 	diedDialog = false;
+	pauseDialog = false;
 }
 
 function ShowLevelEndDialog () {
@@ -66,7 +72,25 @@ function ShowLevelEndDialog () {
 	var zombies2 = new Array(GameObject.FindGameObjectsWithTag("Zombie2"));
 	var zombies : GameObject[] = zombies1.Concat(zombies2).ToBuiltin(GameObject);	
 	
+	if (!flagPlaced) {
+		if (appropriateToShowWarning) {
+			Pause();
+			appropriateToShowWarning = false;
+			dialogString = "Don't forget to place the American flag!";
+			dialogButtonString = "Continue";
+			dialogVisible = true;
+		}
+		return;
+	}
+	
 	if (zombies.Length > 0) {
+		if (appropriateToShowWarning) {
+			Pause();
+			appropriateToShowWarning = false;
+			dialogString = "Don't forget to kill all of the zombies!";
+			dialogButtonString = "Continue";
+			dialogVisible = true;
+		}
 		return;
 	}
 

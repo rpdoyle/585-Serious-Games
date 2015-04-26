@@ -7,6 +7,8 @@ public var levelEndX:int;
 private var dialogVisible:boolean;
 private var levelEndDialog:boolean = false;
 private var diedDialog:boolean = false;
+private var pauseDialog:boolean = false;
+private var appropriateToShowWarning:boolean = true;
 private var dialogString:String;
 private var dialogButtonString:String;
 
@@ -18,8 +20,16 @@ function Start () {
 }
 
 function Update () {
+	if (levelEndX - player.transform.position.x > 3) {
+		appropriateToShowWarning = true;
+	}
+
 	if (levelEndX - player.transform.position.x < 0.1 && !levelEndDialog) {
 	    ShowLevelEndDialog();
+	}
+	
+	if (Input.GetKey(KeyCode.P)) {
+		ShowPauseDialog();
 	}
 }
 
@@ -46,13 +56,32 @@ function HideDialog () {
 	dialogVisible = false;
 	levelEndDialog = false;
 	diedDialog = false;
+	pauseDialog = false;
 }
 
 function ShowLevelEndDialog () {
 	var zombies:GameObject[] = GameObject.FindGameObjectsWithTag("Zombie");
 	var requiredPoints:GameObject[]  = GameObject.FindGameObjectsWithTag("RequiredPoint");
 	
-	if (zombies.Length > 0 || requiredPoints.Length > 0) {
+	if (requiredPoints.Length > 0) {
+		if (appropriateToShowWarning) {
+			Pause();
+			appropriateToShowWarning = false;
+			dialogString = "Don't forget to warn all of the townspeople!";
+			dialogButtonString = "Continue";
+			dialogVisible = true;
+		}
+		return;
+	}
+	
+	if (zombies.Length > 0) {
+		if (appropriateToShowWarning) {
+			Pause();
+			appropriateToShowWarning = false;
+			dialogString = "Don't forget to kill all of the zombies!";
+			dialogButtonString = "Continue";
+			dialogVisible = true;
+		}
 		return;
 	}
 
@@ -70,6 +99,14 @@ function ShowDiedDialog () {
 	Pause();
 	diedDialog = true;
 	dialogString = "You died!";
+	dialogButtonString = "Continue";
+	dialogVisible = true;
+}
+
+function ShowPauseDialog() {
+	Pause();
+	pauseDialog = true;
+	dialogString = "Game Paused";
 	dialogButtonString = "Continue";
 	dialogVisible = true;
 }
