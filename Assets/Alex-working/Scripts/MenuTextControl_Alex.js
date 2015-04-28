@@ -26,10 +26,22 @@ function OnMouseExit () {
 	titleText.enabled = true;
 }
 
+function LoadMainMenu() {
+	Application.LoadLevel(0);
+}
+
 function LoadPaulRevereLevel() {
 	Application.LoadLevel(1);
 }
 
 function LoadMoonLevel() {
 	Application.LoadLevel(2);
+}
+
+function LoadInstructions() {
+	Application.LoadLevel(3);
+}
+
+function LoadCredits() {
+	Application.LoadLevel(4);
 }
