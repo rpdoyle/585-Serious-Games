@@ -10,31 +10,47 @@ private var dialogVisible:boolean;
 private var levelEndDialog:boolean = false;
 private var flagPlaced:boolean = false;
 private var diedDialog:boolean = false;
+private var pauseDialog:boolean = false;
+private var appropriateToShowWarning:boolean = true;
 private var dialogString:String;
 private var dialogButtonString:String;
+private var secondWaveZombies:Array;
 
 function Start () {
-	dialogString = "This is where awesome text explaining the level will be displayed.\n\nYou can use multiple lines if you like. Or not, that's cool too." + 
-						"\nPress any button to do nothing.\n\nNo, seriously, nothing.\n\nYep, absolutely nothing.";
-	dialogButtonString = "Got it!";
+	secondWaveZombies = new Array(GameObject.FindGameObjectsWithTag("Zombie2"));
+	for (var zombie : GameObject in secondWaveZombies) {
+		zombie.SetActive(false);
+	}
+	
+	dialogString = "Congratulations!  You have made it to the moon...\nUh oh!  It looks like you have some company.\n" +
+					"Make your way past the zombies to plant the American flag and \nthen come back to the lunar lander.";
+	dialogButtonString = "Start!";
 	ShowDialog();
 	flag.SetActive(false);
 }
 
 function Update () {
+	if (player.transform.position.x - levelBeginX > 3) {
+		appropriateToShowWarning = true;
+	}
+
 	if (levelEndX - player.transform.position.x < 0.1 && !flagPlaced) {
 	    PlaceFlag();
    	    ReleaseSecondWave();
 	}
-	if (player.transform.position.x - levelBeginX < 0.1 && !levelEndDialog && flagPlaced) {
+	if (player.transform.position.x - levelBeginX < 0.1 && !levelEndDialog) {
 	    ShowLevelEndDialog();
+	}
+	
+	if (Input.GetKey(KeyCode.P) && !dialogVisible) {
+		ShowPauseDialog();
 	}
 }
 
 function OnGUI () {
 	if (dialogVisible) {
 		 GUI.Label (Rect (0, 0, Screen.width, Screen.height), dialogString, dialogueStyle);
-		 if (GUI.Button (Rect (Screen.width - (Screen.width / 4), Screen.height - (Screen.height / 4), 100, 75), dialogButtonString, buttonStyle)) {
+		 if (GUI.Button (Rect (Screen.width - (Screen.width / 3.75), Screen.height - (Screen.height / 4), 120, 75), dialogButtonString, buttonStyle)) {
 		 	if (levelEndDialog || diedDialog) {
 		 		EndLevel();
 		 	} else {
@@ -54,6 +70,7 @@ function HideDialog () {
 	dialogVisible = false;
 	levelEndDialog = false;
 	diedDialog = false;
+	pauseDialog = false;
 }
 
 function ShowLevelEndDialog () {
@@ -61,7 +78,25 @@ function ShowLevelEndDialog () {
 	var zombies2 = new Array(GameObject.FindGameObjectsWithTag("Zombie2"));
 	var zombies : GameObject[] = zombies1.Concat(zombies2).ToBuiltin(GameObject);	
 	
+	if (!flagPlaced) {
+		if (appropriateToShowWarning) {
+			Pause();
+			appropriateToShowWarning = false;
+			dialogString = "Don't forget to place the American flag!";
+			dialogButtonString = "Continue";
+			dialogVisible = true;
+		}
+		return;
+	}
+	
 	if (zombies.Length > 0) {
+		if (appropriateToShowWarning) {
+			Pause();
+			appropriateToShowWarning = false;
+			dialogString = "Don't forget to kill all of the zombies!";
+			dialogButtonString = "Continue";
+			dialogVisible = true;
+		}
 		return;
 	}
 
@@ -69,7 +104,8 @@ function ShowLevelEndDialog () {
 	
 	levelEndDialog = true;
 	
-	dialogString = "Congrats! You made it to the end!";
+	dialogString = "You made it back!  Because of this accomplishment,\nAmericans have gained morale "+
+					"in the Cold War and\nthe United States wins the space race!";
 	dialogButtonString = "Continue";
 	
 	dialogVisible = true;
@@ -81,8 +117,8 @@ function PlaceFlag() {
 }
 
 function ReleaseSecondWave() {
-	var zombies2 = new Array(GameObject.FindGameObjectsWithTag("Zombie2"));
-	for (var zombie : GameObject in zombies2) {
+	for (var zombie : GameObject in secondWaveZombies) {
+		zombie.SetActive(true);
 		zombie.transform.position.y += 12;
 	}
 }
@@ -90,7 +126,16 @@ function ReleaseSecondWave() {
 function ShowDiedDialog () {
 	Pause();
 	diedDialog = true;
-	dialogString = "You died!";
+	dialogString = "You died!  Because of this, Neil Armstrong and Buzz Aldrin\ndo not make it home. " +
+					"America goes on to lose the space race\nand eventually lose the Cold War.";
+	dialogButtonString = "Continue";
+	dialogVisible = true;
+}
+
+function ShowPauseDialog() {
+	Pause();
+	pauseDialog = true;
+	dialogString = "Game Paused";
 	dialogButtonString = "Continue";
 	dialogVisible = true;
 }

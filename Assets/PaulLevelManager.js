@@ -7,26 +7,36 @@ public var levelEndX:int;
 private var dialogVisible:boolean;
 private var levelEndDialog:boolean = false;
 private var diedDialog:boolean = false;
+private var pauseDialog:boolean = false;
+private var appropriateToShowWarning:boolean = true;
 private var dialogString:String;
 private var dialogButtonString:String;
 
 function Start () {
-	dialogString = "This is where awesome text explaining the level will be displayed.\n\nYou can use multiple lines if you like. Or not, that's cool too." + 
-						"\nPress any button to do nothing.\n\nNo, seriously, nothing.\n\nYep, absolutely nothing.";
-	dialogButtonString = "Got it!";
+	dialogString = "The Regulars are coming!  Warn John Hancock,\nSamuel Adams, and the rest of the town about the\n" +
+					"army's advance.  You also have a zombie problem.  Kill the\nzombies and go to each house to warn about the British.";
+	dialogButtonString = "Start!";
 	ShowDialog();
 }
 
 function Update () {
+	if (levelEndX - player.transform.position.x > 3) {
+		appropriateToShowWarning = true;
+	}
+
 	if (levelEndX - player.transform.position.x < 0.1 && !levelEndDialog) {
 	    ShowLevelEndDialog();
+	}
+	
+	if (Input.GetKey(KeyCode.P) && !dialogVisible) {
+		ShowPauseDialog();
 	}
 }
 
 function OnGUI () {
 	if (dialogVisible) {
 		 GUI.Label (Rect (0, 0, Screen.width, Screen.height), dialogString, dialogueStyle);
-		 if (GUI.Button (Rect (Screen.width - (Screen.width / 4), Screen.height - (Screen.height / 4), 100, 75), dialogButtonString, buttonStyle)) {
+		 if (GUI.Button (Rect (Screen.width - (Screen.width / 3.75), Screen.height - (Screen.height / 4), 120, 75), dialogButtonString, buttonStyle)) {
 		 	if (levelEndDialog || diedDialog) {
 		 		EndLevel();
 		 	} else {
@@ -46,13 +56,32 @@ function HideDialog () {
 	dialogVisible = false;
 	levelEndDialog = false;
 	diedDialog = false;
+	pauseDialog = false;
 }
 
 function ShowLevelEndDialog () {
 	var zombies:GameObject[] = GameObject.FindGameObjectsWithTag("Zombie");
 	var requiredPoints:GameObject[]  = GameObject.FindGameObjectsWithTag("RequiredPoint");
 	
-	if (zombies.Length > 0 || requiredPoints.Length > 0) {
+	if (requiredPoints.Length > 0) {
+		if (appropriateToShowWarning) {
+			Pause();
+			appropriateToShowWarning = false;
+			dialogString = "Don't forget to warn all of the townspeople!";
+			dialogButtonString = "Continue";
+			dialogVisible = true;
+		}
+		return;
+	}
+	
+	if (zombies.Length > 0) {
+		if (appropriateToShowWarning) {
+			Pause();
+			appropriateToShowWarning = false;
+			dialogString = "Don't forget to kill all of the zombies!";
+			dialogButtonString = "Continue";
+			dialogVisible = true;
+		}
 		return;
 	}
 
@@ -60,7 +89,9 @@ function ShowLevelEndDialog () {
 	
 	levelEndDialog = true;
 	
-	dialogString = "Congrats! You made it to the end!";
+	dialogString = "Congrats! You have successfully warned\neveryone about the British.  John Hancock " +
+					"\nand Samuel Adams are able to get away and\nthey help lead the colonists to a " +
+					"Revolutionary\nWar victory!";
 	dialogButtonString = "Continue";
 	
 	dialogVisible = true;
@@ -69,7 +100,17 @@ function ShowLevelEndDialog () {
 function ShowDiedDialog () {
 	Pause();
 	diedDialog = true;
-	dialogString = "You died!";
+	dialogString = "You died!  John Hancock and Samuel Adams\nare not warned about the British and \nare arrested. " +
+					"Without the leadership of these\ntwo forefathers, the colonists go on to\n lose the Revolutionary War "+
+					"and America never\nbecomes a country.";
+	dialogButtonString = "Continue";
+	dialogVisible = true;
+}
+
+function ShowPauseDialog() {
+	Pause();
+	pauseDialog = true;
+	dialogString = "Game Paused";
 	dialogButtonString = "Continue";
 	dialogVisible = true;
 }
