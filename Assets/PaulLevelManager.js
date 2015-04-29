@@ -14,7 +14,8 @@ private var dialogButtonString:String;
 
 function Start () {
 	dialogString = "The Regulars are coming!  Warn John Hancock,\nSamuel Adams, and the rest of the town about the\n" +
-					"army's advance.  You also have a zombie problem.  Kill the\nzombies and go to each house to warn about the British.";
+					"army's advance.  You also have a zombie problem.  Kill\nthe zombies and go to each house to warn the" +
+					"\ntownspeople about the British.";
 	dialogButtonString = "Start!";
 	ShowDialog();
 }
@@ -89,9 +90,9 @@ function ShowLevelEndDialog () {
 	
 	levelEndDialog = true;
 	
-	dialogString = "Congrats! You have successfully warned\neveryone about the British.  John Hancock " +
-					"\nand Samuel Adams are able to get away and\nthey help lead the colonists to a " +
-					"Revolutionary\nWar victory!";
+	dialogString = "Congrats! You have successfully warned\neveryone about the British.  John Hancock" +
+					"\nand Samuel Adams are able to escape, and\nthey help lead the colonists to a\n" +
+					"Revolutionary War victory!";
 	dialogButtonString = "Continue";
 	
 	dialogVisible = true;
@@ -100,8 +101,8 @@ function ShowLevelEndDialog () {
 function ShowDiedDialog () {
 	Pause();
 	diedDialog = true;
-	dialogString = "You died!  John Hancock and Samuel Adams\nare not warned about the British and \nare arrested. " +
-					"Without the leadership of these\ntwo forefathers, the colonists go on to\n lose the Revolutionary War "+
+	dialogString = "You died!  John Hancock and Samuel Adams\nare not warned about the British, and they\nare arrested. " +
+					"Without the leadership of these\ntwo forefathers, the colonists go on to\n lose the Revolutionary War, "+
 					"and America never\nbecomes a country.";
 	dialogButtonString = "Continue";
 	dialogVisible = true;

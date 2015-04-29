@@ -22,8 +22,9 @@ function Start () {
 		zombie.SetActive(false);
 	}
 	
-	dialogString = "Congratulations!  You have made it to the moon...\nUh oh!  It looks like you have some company.\n" +
-					"Make your way past the zombies to plant the American flag and \nthen come back to the lunar lander.";
+	dialogString = "Congratulations!  You have made it to the Moon.\nUh oh!  It looks like you have some company…\n" +
+					"Make your way past the zombies to plant the American flag on the\nfar side of the Moon, and " +
+					"then come back to the lunar lander.";
 	dialogButtonString = "Start!";
 	ShowDialog();
 	flag.SetActive(false);
@@ -104,8 +105,8 @@ function ShowLevelEndDialog () {
 	
 	levelEndDialog = true;
 	
-	dialogString = "You made it back!  Because of this accomplishment,\nAmericans have gained morale "+
-					"in the Cold War and\nthe United States wins the space race!";
+	dialogString = "You made it back!  Because of your accomplishment,\nAmericans have gained morale "+
+					"during the Cold War, and\nthe United States wins the Space Race!";
 	dialogButtonString = "Continue";
 	
 	dialogVisible = true;
@@ -127,7 +128,7 @@ function ShowDiedDialog () {
 	Pause();
 	diedDialog = true;
 	dialogString = "You died!  Because of this, Neil Armstrong and Buzz Aldrin\ndo not make it home. " +
-					"America goes on to lose the space race\nand eventually lose the Cold War.";
+					"America goes on to lose the Space Race\nand eventually the Cold War.";
 	dialogButtonString = "Continue";
 	dialogVisible = true;
 }
